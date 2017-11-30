@@ -5,22 +5,27 @@ using UnityEngine;
 public class TreeGenerator : MonoBehaviour {
 
 	public Terrain terrain;
+	TerrainData td1;
+	TerrainData td2;
+	List<TreeInstance> backup;
+	List<GameObject> toRespawn;
 	// Use this for initialization
 	void Start () {
 		test ();
-
+		toRespawn = new List<GameObject>();
 		List<TreeInstance> newTrees = new List<TreeInstance> (terrain.terrainData.treeInstances);
 		List<Vector3> posTrees = new List<Vector3> ();
 		List<GameObject> modelTree = new List<GameObject> ();
 
 		for (int i = 0; i < newTrees.Count; i++) {
 			TreeInstance t = newTrees [i];
-			Debug.Log (t.position +" "+ i + terrain.terrainData.size);
 			posTrees.Add (t.position);
 			modelTree.Add (terrain.terrainData.treePrototypes [t.prototypeIndex].prefab);
 			posTrees [i] = new Vector3 (posTrees [i].x * terrain.terrainData.size.x, posTrees [i].y * terrain.terrainData.size.y, terrain.terrainData.size.z * posTrees [i].z); 
 		}
 		terrain.terrainData.treeInstances = new List<TreeInstance>().ToArray ();
+		float[,] heights = terrain.terrainData.GetHeights(0, 0, 0, 0);
+		terrain.terrainData.SetHeights(0, 0, heights);
 		for (int i = 0; i < posTrees.Count; i++) {
 			Instantiate (modelTree[i], posTrees[i],Quaternion.identity);
 		}
@@ -33,10 +38,6 @@ public class TreeGenerator : MonoBehaviour {
 
 
 	}
-
-	TerrainData td1;
-    TerrainData td2;
-	List<TreeInstance> backup;
 
 
     void test () {
@@ -52,11 +53,11 @@ public class TreeGenerator : MonoBehaviour {
 
         // This is the backup name/path of the cloned TerrainData.
         string tdBackupName = "TerrainData/" + td1.name;
-        td2 = Resources.Load<TerrainData>(tdBackupName);
-        if (td2 == null) {
-            Debug.LogError("No TerrainData backup in a Resources folder, missing name is: " + tdBackupName);
-            return;
-        }
+        //td2 = Resources.Load<TerrainData>(tdBackupName);
+        //if (td2 == null) {
+        //    Debug.LogError("No TerrainData backup in a Resources folder, missing name is: " + tdBackupName);
+        //    return;
+        //}
 
         // If blue screen. We still have to copy, for sure. It is a fast operation.
         resetTerrainDataChanges();
@@ -70,14 +71,23 @@ public class TreeGenerator : MonoBehaviour {
 
     void resetTerrainDataChanges() {
         // Terrain collider
-        td1.SetHeights(0, 0, td2.GetHeights(0, 0, td1.heightmapWidth, td1.heightmapHeight));
+        //td1.SetHeights(0, 0, td2.GetHeights(0, 0, td1.heightmapWidth, td1.heightmapHeight));
         // Textures
-        td1.SetAlphamaps(0, 0, td2.GetAlphamaps(0, 0, td1.alphamapWidth, td1.alphamapHeight));
+        //td1.SetAlphamaps(0, 0, td2.GetAlphamaps(0, 0, td1.alphamapWidth, td1.alphamapHeight));
         // Trees
 		terrain.terrainData.treeInstances = backup.ToArray();
         // Grasses
         //td1.SetDetailLayer(0, 0, 0, td2.GetDetailLayer(0, 0, td1.detailWidth, td1.detailHeight, 0));
     }
+
+	public void addArbreToRespawn (Vector3 position, float time , GameObject gameObject){
+		Debug.Log(gameObject.transform.position);
+		toRespawn.Add(gameObject);
+		//gameObject.transform.position = gameObject.transform.position + new Vector3 (0, 100, 0);
+		gameObject.SetActive (false);
+
+		Debug.Log(toRespawn.Count);
+	}
 // Update is called once per frame
 	void Update () {
 		

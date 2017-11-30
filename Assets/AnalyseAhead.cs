@@ -17,10 +17,21 @@ public class AnalyseAhead : MonoBehaviour {
 
 		if(Physics.Raycast (transform.position, transform.forward, out hit, distanceRayCast)) {
 			//Debug.Log (hit.collider.gameObject.tag);
-			if (hit.collider.gameObject.tag == "Animal") {
+			/*if (hit.collider.gameObject.tag == "Animal") {
 				if (Input.GetKeyDown(KeyCode.E)) {
 					hit.collider.gameObject.GetComponent<SoundManager> ().launchSound ();
 					hit.collider.gameObject.GetComponent<RessourceManager>().getRessource (this.gameObject);
+				}
+			}*/
+			if (hit.collider.gameObject.GetComponent<Recoltable>() != null && hit.collider.gameObject.GetComponent<Recoltable>().readyForHarvest) {
+				if (Input.GetKeyDown(KeyCode.E)) {
+					hit.collider.gameObject.GetComponent<Recoltable>().harvest (this.gameObject);
+
+				}
+			}
+			if (hit.collider.gameObject.GetComponent<SoundManager>() != null){
+				if (Input.GetKeyDown(KeyCode.E)) {
+					hit.collider.gameObject.GetComponent<SoundManager> ().launchSound ();
 				}
 			}
 		}
