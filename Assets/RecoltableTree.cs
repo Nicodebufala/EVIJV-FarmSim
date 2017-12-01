@@ -15,9 +15,11 @@ public class RecoltableTree : Recoltable {
 	}
 
 	public override void harvest(GameObject player){
-		float tmp = quantity;
-		quantity = 0f;
-		player.GetComponent<InventoryManager>().addElement(nameRessource,Mathf.CeilToInt(tmp));
-		GameObject.FindObjectOfType<Terrain> ().GetComponentInChildren<TreeGenerator> ().addArbreToRespawn (this.transform.position, Time.time, this.gameObject);
+		if (player.GetComponent<ToolEquipped> ().axe) {
+			float tmp = quantity;
+			quantity = 100f; // pour le respawn
+			player.GetComponent<InventoryManager>().addElement(nameRessource,Mathf.CeilToInt(tmp));
+			GameObject.FindObjectOfType<Terrain> ().GetComponentInChildren<TreeGenerator> ().addArbreToRespawn (this.transform.position, Time.time + 5f, this.gameObject);
+		}
 	}
 }

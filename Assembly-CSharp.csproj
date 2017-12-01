@@ -57,6 +57,8 @@
      <Compile Include="Assets\SheepSoundManager.cs" />
      <Compile Include="Assets\SoundManager.cs" />
      <Compile Include="Assets\TerrainTreeManager.cs" />
+     <Compile Include="Assets\ToolChoiceDisplay.cs" />
+     <Compile Include="Assets\ToolEquipped.cs" />
      <Compile Include="Assets\TreeGenerator.cs" />
      <Compile Include="Assets\WoolManager.cs" />
      <None Include="Assets\LowpolyVegetationPackFree\Readme.txt" />

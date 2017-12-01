@@ -9,13 +9,17 @@ public class TreeGenerator : MonoBehaviour {
 	TerrainData td2;
 	List<TreeInstance> backup;
 	List<GameObject> toRespawn;
+	List<float> toRespawnTime;
 	// Use this for initialization
 	void Start () {
+		InvokeRepeating ("respawnTree", 5, 5);
 		test ();
 		toRespawn = new List<GameObject>();
+		toRespawnTime = new List<float>();
 		List<TreeInstance> newTrees = new List<TreeInstance> (terrain.terrainData.treeInstances);
 		List<Vector3> posTrees = new List<Vector3> ();
 		List<GameObject> modelTree = new List<GameObject> ();
+
 
 		for (int i = 0; i < newTrees.Count; i++) {
 			TreeInstance t = newTrees [i];
@@ -83,10 +87,27 @@ public class TreeGenerator : MonoBehaviour {
 	public void addArbreToRespawn (Vector3 position, float time , GameObject gameObject){
 		Debug.Log(gameObject.transform.position);
 		toRespawn.Add(gameObject);
+		toRespawnTime.Add (time);
 		//gameObject.transform.position = gameObject.transform.position + new Vector3 (0, 100, 0);
 		gameObject.SetActive (false);
-
 		Debug.Log(toRespawn.Count);
+	}
+
+	public void respawnTree(){
+		int d = 0;
+		List<int> tmp = new List<int> ();
+		for (int i = 0; i < toRespawnTime.Count; i++) {
+			if (toRespawnTime[i] < Time.time){
+				toRespawn [i].SetActive (true);
+				tmp.Add (i - d);
+				d += 1;
+			}
+		}
+		for (int i = 0; i < tmp.Count; i++) {
+			toRespawn.RemoveAt (tmp [i]);
+			toRespawnTime.RemoveAt (tmp [i]);
+		}
+			
 	}
 // Update is called once per frame
 	void Update () {
