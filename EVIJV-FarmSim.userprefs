@@ -1,13 +1,18 @@
 ﻿<Properties StartupItem="Assembly-CSharp.csproj">
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" PreferredExecutionTarget="Unity.Instance.Unity Editor" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\TreeGenerator.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Assets\Scripts\ProductReferences.cs">
     <Files>
-      <File FileName="Assets\Recoltable.cs" Line="25" Column="90" />
-      <File FileName="Assets\WoolManager.cs" Line="19" Column="21" />
-      <File FileName="Assets\AnalyseAhead.cs" Line="29" Column="6" />
-      <File FileName="Assets\TreeGenerator.cs" Line="28" Column="49" />
-      <File FileName="Assets\RecoltableTree.cs" Line="21" Column="154" />
-      <File FileName="Assets\RespawnTreeManager.cs" Line="35" Column="1" />
+      <File FileName="Assets\Scripts\AnalyseAhead.cs" Line="1" Column="1" />
+      <File FileName="Assets\PlantChoiceMenuUI.cs" Line="1" Column="1" />
+      <File FileName="Assets\Standard Assets\Characters\FirstPersonCharacter\Scripts\MouseLook.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\InventoryManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\SoilManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GrowingProductManager.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\GrowingCarrotPack.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\ProductReferences.cs" Line="11" Column="28" />
+      <File FileName="Assets\Scripts\ToolChoiceDisplay.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\TreeGrowth.cs" Line="1" Column="1" />
+      <File FileName="Assets\Scripts\MeshJoining.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>

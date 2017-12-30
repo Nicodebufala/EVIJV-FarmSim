@@ -123,67 +123,86 @@ namespace UnityStandardAssets.Characters.FirstPerson
             m_RigidBody = GetComponent<Rigidbody>();
             m_Capsule = GetComponent<CapsuleCollider>();
             mouseLook.Init (transform, cam.transform);
+			Cursor.visible = true;
+
+			//Cursor.lockState = CursorLockMode.None;
+			//mouseLook.lockCursor = true;
+			//mouseLook.enabled = false;
+
         }
 
 
         private void Update()
         {
-            RotateView();
-
-            if (CrossPlatformInputManager.GetButtonDown("Jump") && !m_Jump)
-            {
-                m_Jump = true;
-            }
+			if (mouseLook.enabled) {
+				RotateView ();
+				if (CrossPlatformInputManager.GetButtonDown ("Jump") && !m_Jump) {
+					m_Jump = true;
+				}
+			}
         }
 
+		public void changeLockState ()
+		{
+			if (!mouseLook.enabled) {
+				mouseLook.enabled = true;
+				mouseLook.Init (transform, cam.transform);
+				mouseLook.m_cursorIsLocked = true;
+				mouseLook.lockCursor = true;
+				Cursor.lockState = CursorLockMode.Locked;
+				Debug.Log (Cursor.visible);
+			} else {
+				mouseLook.enabled = false;
+				//Cursor.visible = true;
+				mouseLook.m_cursorIsLocked = false;
+				mouseLook.lockCursor = false;
+				Cursor.lockState = CursorLockMode.None;
+				Cursor.visible = true;
+				Debug.Log (Cursor.visible);
+			}
+		}
 
         private void FixedUpdate()
         {
-            GroundCheck();
-            Vector2 input = GetInput();
+			if (enabled) {
+				GroundCheck ();
+				Vector2 input = GetInput ();
 
-            if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
-            {
-                // always move along the camera forward as it is the direction that it being aimed at
-                Vector3 desiredMove = cam.transform.forward*input.y + cam.transform.right*input.x;
-                desiredMove = Vector3.ProjectOnPlane(desiredMove, m_GroundContactNormal).normalized;
+				if ((Mathf.Abs (input.x) > float.Epsilon || Mathf.Abs (input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded)) {
+					// always move along the camera forward as it is the direction that it being aimed at
+					Vector3 desiredMove = cam.transform.forward * input.y + cam.transform.right * input.x;
+					desiredMove = Vector3.ProjectOnPlane (desiredMove, m_GroundContactNormal).normalized;
 
-                desiredMove.x = desiredMove.x*movementSettings.CurrentTargetSpeed;
-                desiredMove.z = desiredMove.z*movementSettings.CurrentTargetSpeed;
-                desiredMove.y = desiredMove.y*movementSettings.CurrentTargetSpeed;
-                if (m_RigidBody.velocity.sqrMagnitude <
-                    (movementSettings.CurrentTargetSpeed*movementSettings.CurrentTargetSpeed))
-                {
-                    m_RigidBody.AddForce(desiredMove*SlopeMultiplier(), ForceMode.Impulse);
-                }
-            }
+					desiredMove.x = desiredMove.x * movementSettings.CurrentTargetSpeed;
+					desiredMove.z = desiredMove.z * movementSettings.CurrentTargetSpeed;
+					desiredMove.y = desiredMove.y * movementSettings.CurrentTargetSpeed;
+					if (m_RigidBody.velocity.sqrMagnitude <
+					               (movementSettings.CurrentTargetSpeed * movementSettings.CurrentTargetSpeed)) {
+						m_RigidBody.AddForce (desiredMove * SlopeMultiplier (), ForceMode.Impulse);
+					}
+				}
 
-            if (m_IsGrounded)
-            {
-                m_RigidBody.drag = 5f;
+				if (m_IsGrounded) {
+					m_RigidBody.drag = 5f;
 
-                if (m_Jump)
-                {
-                    m_RigidBody.drag = 0f;
-                    m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
-                    m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
-                    m_Jumping = true;
-                }
+					if (m_Jump) {
+						m_RigidBody.drag = 0f;
+						m_RigidBody.velocity = new Vector3 (m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
+						m_RigidBody.AddForce (new Vector3 (0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
+						m_Jumping = true;
+					}
 
-                if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
-                {
-                    m_RigidBody.Sleep();
-                }
-            }
-            else
-            {
-                m_RigidBody.drag = 0f;
-                if (m_PreviouslyGrounded && !m_Jumping)
-                {
-                    StickToGroundHelper();
-                }
-            }
-            m_Jump = false;
+					if (!m_Jumping && Mathf.Abs (input.x) < float.Epsilon && Mathf.Abs (input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f) {
+						m_RigidBody.Sleep ();
+					}
+				} else {
+					m_RigidBody.drag = 0f;
+					if (m_PreviouslyGrounded && !m_Jumping) {
+						StickToGroundHelper ();
+					}
+				}
+				m_Jump = false;
+			}
         }
 
 
@@ -224,6 +243,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
         private void RotateView()
         {
+			
             //avoids the mouse looking if the game is effectively paused
             if (Mathf.Abs(Time.timeScale) < float.Epsilon) return;
 

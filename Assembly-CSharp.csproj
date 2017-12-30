@@ -46,21 +46,31 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\AnalyseAhead.cs" />
-     <Compile Include="Assets\AnimalSoundManager.cs" />
-     <Compile Include="Assets\InventoryDisplay.cs" />
-     <Compile Include="Assets\InventoryManager.cs" />
-     <Compile Include="Assets\Recoltable.cs" />
-     <Compile Include="Assets\RecoltableTree.cs" />
-     <Compile Include="Assets\RespawnTreeManager.cs" />
-     <Compile Include="Assets\RessourceManager.cs" />
-     <Compile Include="Assets\SheepSoundManager.cs" />
-     <Compile Include="Assets\SoundManager.cs" />
-     <Compile Include="Assets\TerrainTreeManager.cs" />
-     <Compile Include="Assets\ToolChoiceDisplay.cs" />
-     <Compile Include="Assets\ToolEquipped.cs" />
-     <Compile Include="Assets\TreeGenerator.cs" />
-     <Compile Include="Assets\WoolManager.cs" />
+     <Compile Include="Assets\PlantChoiceMenuUI.cs" />
+     <Compile Include="Assets\Prototype Materials\ShowcaseMovement.cs" />
+     <Compile Include="Assets\Scripts\AnalyseAhead.cs" />
+     <Compile Include="Assets\Scripts\AnimalSoundManager.cs" />
+     <Compile Include="Assets\Scripts\GrowingCarrotPack.cs" />
+     <Compile Include="Assets\Scripts\GrowingProductManager.cs" />
+     <Compile Include="Assets\Scripts\InventoryDisplay.cs" />
+     <Compile Include="Assets\Scripts\InventoryManager.cs" />
+     <Compile Include="Assets\Scripts\MeshJoining.cs" />
+     <Compile Include="Assets\Scripts\ProductReferences.cs" />
+     <Compile Include="Assets\Scripts\Recoltable.cs" />
+     <Compile Include="Assets\Scripts\RecoltableTree.cs" />
+     <Compile Include="Assets\Scripts\RespawnTreeManager.cs" />
+     <Compile Include="Assets\Scripts\RessourceManager.cs" />
+     <Compile Include="Assets\Scripts\SheepSoundManager.cs" />
+     <Compile Include="Assets\Scripts\SoilManager.cs" />
+     <Compile Include="Assets\Scripts\SoundManager.cs" />
+     <Compile Include="Assets\Scripts\TerrainTreeManager.cs" />
+     <Compile Include="Assets\Scripts\ToolChoiceDisplay.cs" />
+     <Compile Include="Assets\Scripts\ToolEquipped.cs" />
+     <Compile Include="Assets\Scripts\TreeGenerator.cs" />
+     <Compile Include="Assets\Scripts\TreeGrowth.cs" />
+     <Compile Include="Assets\Scripts\WoolManager.cs" />
+     <Compile Include="Assets\TestEnableDisable.cs" />
+     <None Include="Assets\cadnav.com_model\readme.txt" />
      <None Include="Assets\LowpolyVegetationPackFree\Readme.txt" />
      <None Include="Assets\VertexColorFarmAnimals\Shaders\VertexColorUnlit.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />
