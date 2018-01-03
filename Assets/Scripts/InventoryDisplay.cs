@@ -13,14 +13,11 @@ public class InventoryDisplay : MonoBehaviour {
 	
 	// Update is called once per frame
 	public void updateDisplay(){
-		Debug.Log ("display");
 		string tmp = "";
-		ArrayList items = player.GetComponent<InventoryManager>().getItems ();
+		ArrayList items = player.GetComponent<InventoryManager>().getRessources ();
 		foreach(string s in items){
-			Debug.Log (s);
 			tmp =tmp + s + "\n" ;
 		}
-		Debug.Log (tmp);
 		this.GetComponent<Text>().text = tmp;
 	}
 }

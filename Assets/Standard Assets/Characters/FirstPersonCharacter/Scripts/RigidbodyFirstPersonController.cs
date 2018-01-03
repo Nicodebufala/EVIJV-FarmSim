@@ -150,7 +150,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				mouseLook.m_cursorIsLocked = true;
 				mouseLook.lockCursor = true;
 				Cursor.lockState = CursorLockMode.Locked;
-				Debug.Log (Cursor.visible);
 			} else {
 				mouseLook.enabled = false;
 				//Cursor.visible = true;
@@ -158,7 +157,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
 				mouseLook.lockCursor = false;
 				Cursor.lockState = CursorLockMode.None;
 				Cursor.visible = true;
-				Debug.Log (Cursor.visible);
 			}
 		}
 

@@ -46,7 +46,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-     <Compile Include="Assets\PlantChoiceMenuUI.cs" />
+     <Compile Include="Assets\CraftChoiceMenuUI.cs" />
+     <Compile Include="Assets\ItemRefCrafting.cs" />
+     <Compile Include="Assets\ItemRefPlacing.cs" />
+     <Compile Include="Assets\PlaceItemChoiceMenuUI.cs" />
+     <Compile Include="Assets\ProductRef.cs" />
      <Compile Include="Assets\Prototype Materials\ShowcaseMovement.cs" />
      <Compile Include="Assets\Scripts\AnalyseAhead.cs" />
      <Compile Include="Assets\Scripts\AnimalSoundManager.cs" />
@@ -55,6 +59,8 @@
      <Compile Include="Assets\Scripts\InventoryDisplay.cs" />
      <Compile Include="Assets\Scripts\InventoryManager.cs" />
      <Compile Include="Assets\Scripts\MeshJoining.cs" />
+     <Compile Include="Assets\Scripts\PlacingItemCollisionCheck.cs" />
+     <Compile Include="Assets\Scripts\PlantChoiceMenuUI.cs" />
      <Compile Include="Assets\Scripts\ProductReferences.cs" />
      <Compile Include="Assets\Scripts\Recoltable.cs" />
      <Compile Include="Assets\Scripts\RecoltableTree.cs" />
@@ -71,6 +77,7 @@
      <Compile Include="Assets\Scripts\WoolManager.cs" />
      <Compile Include="Assets\TestEnableDisable.cs" />
      <None Include="Assets\cadnav.com_model\readme.txt" />
+     <None Include="Assets\CraftDB.txt" />
      <None Include="Assets\LowpolyVegetationPackFree\Readme.txt" />
      <None Include="Assets\VertexColorFarmAnimals\Shaders\VertexColorUnlit.shader" />
      <None Include="Assets\Standard Assets\CrossPlatformInput\CrossPlatformInputGuidelines.txt" />

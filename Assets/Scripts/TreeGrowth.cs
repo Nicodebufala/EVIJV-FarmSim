@@ -22,10 +22,10 @@ public class TreeGrowth : MonoBehaviour {
 		if (!spawnFruit) {
 			List<MeshJoining> lst = new List<MeshJoining> ();
 			this.GetComponentsInChildren<MeshJoining>(lst);
-			if (!spawnFruit) {
-				fruitscaleLimit = lst [0].gameObject.transform.localScale.x;
-			}
 			for (int i = 0; i < lst.Count; i++) {
+				if (!spawnFruit) {
+					fruitscaleLimit = lst [0].gameObject.transform.localScale.x;
+				}
 				lst [i].gameObject.transform.localScale = lst [i].gameObject.transform.localScale * Random.Range(0.05f,0.1f);
 			}
 		}
