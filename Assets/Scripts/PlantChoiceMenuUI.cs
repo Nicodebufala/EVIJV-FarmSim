@@ -52,7 +52,6 @@ public class PlantChoiceMenuUI : MonoBehaviour {
 			this.gameObject.SetActive(false);
 		} else {
 			string[] t = nameButton.Split (new string[] { "_" }, System.StringSplitOptions.None);
-			Debug.Log (t);
 			GameObject.FindGameObjectWithTag("Player").GetComponent<InventoryManager> ().removeElement (t[0],1);
 			soilTouched.GetComponent<GrowingProductManager> ().addProduct (t[1]);
 			updateQuantities ();

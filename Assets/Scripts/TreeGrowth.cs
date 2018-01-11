@@ -15,20 +15,27 @@ public class TreeGrowth : MonoBehaviour {
 	void Start(){
 		this.transform.rotation = new Quaternion(0, Random.Range(0, 350), 0, 0);
 		if (fruitPrefab != null) {
+			
 			fruitscaleLimit = fruitPrefab.transform.localScale.x;
+			Debug.Log (fruitscaleLimit);
 		}
 		treescaleLimit = this.transform.localScale.y;
-		this.transform.localScale = new Vector3 (0.1f, 0.1f, 0.1f) * treescaleLimit;
 		if (!spawnFruit) {
 			List<MeshJoining> lst = new List<MeshJoining> ();
 			this.GetComponentsInChildren<MeshJoining>(lst);
+			if (!spawnFruit) {
+				fruitscaleLimit = lst [0].gameObject.transform.localScale.x;
+				Debug.Log (fruitscaleLimit);
+				Debug.Log (lst[0].gameObject);
+
+			}
 			for (int i = 0; i < lst.Count; i++) {
-				if (!spawnFruit) {
-					fruitscaleLimit = lst [0].gameObject.transform.localScale.x;
-				}
+				
 				lst [i].gameObject.transform.localScale = lst [i].gameObject.transform.localScale * Random.Range(0.05f,0.1f);
 			}
 		}
+		this.transform.localScale = new Vector3 (0.1f, 0.1f, 0.1f) * treescaleLimit;
+		Debug.Log (fruitscaleLimit);
 
 	}
 
@@ -135,6 +142,7 @@ public class TreeGrowth : MonoBehaviour {
 						for (int j = 0; j < children.Length; j++) {
 							children [j].gameObject.SetActive (true);
 						}
+						tmp.transform.parent = null;
 						//fruit.GetComponent<MeshJoining> ().launchMJ ();
 					}
 				}

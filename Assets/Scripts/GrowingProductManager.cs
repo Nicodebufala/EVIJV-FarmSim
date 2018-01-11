@@ -34,7 +34,7 @@ public class GrowingProductManager : MonoBehaviour {
 		}
 		availableSpaces [i] = false;
 		Vector3 pos = this.transform.position + new Vector3(i % 3,0,Mathf.FloorToInt(i / 3));
-		GameObject tmp = GameObject.Instantiate (prefabtmp, pos, Quaternion.identity);
+		GameObject tmp = (GameObject) GameObject.Instantiate (prefabtmp, pos, Quaternion.identity);
 		tmp.transform.parent = this.transform;
 		tmp.transform.localPosition = 2*5/3*(new Vector3(i % 3,0,Mathf.FloorToInt(i / 3))) + new Vector3(-4,0,-4);
 		productsList.Add (tmp);

@@ -10,6 +10,7 @@ public class ToolChoiceDisplay : MonoBehaviour {
 	public GameObject player;
 	public List<GameObject> tools;
 	public List<string> nameTools;
+	public Canvas canv;
 	// Use this for initialization
 	void Start () {
 		nameTools = new List<string> ();
@@ -22,7 +23,8 @@ public class ToolChoiceDisplay : MonoBehaviour {
 		GameObject[] toolsobjects = GameObject.FindGameObjectsWithTag ("Tool");
 		for (int i = 0; i < toolsobjects.Length; i++){
 			toolsobjects[i].transform.SetParent(toolBar.transform);
-			toolsobjects[i].transform.position = selector.transform.position + new Vector3 (56 * i, 0, 0);
+			toolsobjects[i].transform.position = selector.transform.position + new Vector3 (50 * i * canv.scaleFactor  , 0, 0);
+			toolsobjects [i].transform.localScale = selector.transform.localScale * 0.9f;
 			nameTools.Add (tools[i].name);
 		}
 
@@ -59,7 +61,7 @@ public class ToolChoiceDisplay : MonoBehaviour {
 			i = 8;
 		}
 		if (i != -1) {
-			selector.transform.localPosition = new Vector3(-225 + i*56,0,0);
+			selector.transform.localPosition = new Vector3(-200 + i*50,0,0);
 			player.GetComponent<ToolEquipped> ().resetBool ();
 			if (i < nameTools.Count) {
 				player.GetComponent<ToolEquipped> ().checkEquip (nameTools [i]);

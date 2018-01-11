@@ -24,7 +24,7 @@ public class SoilManager : MonoBehaviour {
 				return;
 			}
 		}
-		GameObject tmp = GameObject.Instantiate (soilPrefab, new Vector3 (x, y, z), Quaternion.identity);
+		GameObject tmp = (GameObject) GameObject.Instantiate (soilPrefab, new Vector3 (x, y, z), Quaternion.identity);
 		soilList.Add (tmp);
 
 

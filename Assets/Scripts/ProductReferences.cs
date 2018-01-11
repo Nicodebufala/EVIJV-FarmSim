@@ -70,9 +70,9 @@ public class ProductReferences : MonoBehaviour {
 						t.Add (tmp [2], (float)qty);
 					}
 				}
-				Debug.Log (namePref);
-				Debug.Log ((GameObject)Resources.Load (namePref));
-				Debug.Log (Resources.Load (namePref + "photo"));
+				//Debug.Log (namePref);
+				//Debug.Log ((GameObject)Resources.Load (namePref));
+				//Debug.Log (Resources.Load (namePref + "photo"));
 				craftItemList.Add (new CraftItem (nameCraft, (GameObject)Resources.Load (namePref), t, (Texture2D)Resources.Load (namePref + "photo")));
 
 

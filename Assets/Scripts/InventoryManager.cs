@@ -22,7 +22,6 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public void addElement(string name,float quantity, bool craftedItem = false){
-		Debug.Log ("addElement " + name);
 		if (craftedItem) {
 			if (craftedItems.ContainsKey (name)) {
 				int val = 0;
@@ -47,7 +46,6 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public bool removeElement(string name,float quantity){
-		Debug.Log ("removeelement " + name);
 		float stock = 0f;
 		if (inventory.ContainsKey (name)) {
 			inventory.TryGetValue (name, out stock);
@@ -85,7 +83,6 @@ public class InventoryManager : MonoBehaviour {
 	}
 
 	public float getElementQuantity(string name){
-		Debug.Log ("checkElementQuantity " + name);
 		float stock = 0f;
 		if (inventory.ContainsKey (name)) {
 			inventory.TryGetValue (name, out stock);
